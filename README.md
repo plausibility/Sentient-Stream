@@ -9,6 +9,7 @@ Setup
 There are some small steps to getting Sentient Stream setup.
 + Git clone Sentient Stream somewhere.
 + Gather up all your music, sort it into genre. You want this sort of layout:
+
 ```
 genres
 - jazz
@@ -21,6 +22,7 @@ genres
   - Muse
   - Nirvana
 ```
+
 + Give build_playlist.py an __absolute__ link to that folder. (The string is called "_genre")
 + Change anything applicable in radio.liq and build_playlist.py.
 	+ The source_pass, + connection variables in radio.liq
