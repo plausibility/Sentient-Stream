@@ -20,6 +20,7 @@ The idea here is that:
 """
 
 # We'll play .mp3, .m4a, .ogg, .flac (change if you have more/less liquidsoap plugins)
+# The m4a decoder seems to segfault for me a lot, so perhaps don't use it.
 _reg_file = re.compile("\\.(?:mp3|m4a|ogg|flac)$", re.I)
 _genre = "/path/to/genre/folder"
 _playlist = "./playlist.pls" # Relative to script calling dir, since it doesn't matter.
@@ -66,12 +67,12 @@ def make_playlist():
 def fetch_next():
 	if not os.path.isfile(_playlist):
 		make_playlist()
-		return fetch_next()
+		return _jingle
 
 	try:
 		lines = []
 		with open(_playlist, 'rb') as f:
-			lines = [line.strip() for line in f.readlines()]
+			lines = [line.strip() for line in f.readlines() if line.strip() != ""]
 		
 		if len(lines) == 0:
 			make_playlist()

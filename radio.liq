@@ -48,8 +48,10 @@ s_noise = mksafe(s_noise)
 # This will just re-request the song file every time. Yay!
 s_sentience = request.dynamic(id="playlist", {sentience()})
 
-# Crossfade, since it makes everything smoother.
-s_sentience = crossfade(start_next=2.5, fade_out=2.5, fade_in=2.5, s_sentience)
+# Crossfade, since it makes everything smoother. (Using default values: 5, 3, 3 because why not)
+s_sentience = crossfade(start_next=5., fade_out=3., fade_in=3., s_sentience)
+# Skip -28dB blank if found for 3 seconds.
+s_sentience = skip_blank(threshold=-28., length=3., s_sentience)
 
 s_primary = fallback(track_sensitive=false, [s_sentience, s_noise])
 
