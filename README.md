@@ -30,6 +30,12 @@ genres
 + Make sure nothing messed up horribly. `liquidsoap --check radio.liq`
 + Run it! `liquidsoap -d radio.liq`
 
+NB!
+---
++ The default skip_blank() time of 3 seconds might not be enough. Increase this if it's affecting your playlist.
++ The skip command isn't implemented yet, but it's a TODO.
++ You might like to muck around with the crossfade() variables to your taste.
+
 What's it do?
 ---
 The idea behind Sentient Stream is this:  
